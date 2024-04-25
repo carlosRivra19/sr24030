@@ -26,14 +26,12 @@ comida(X, Y, Z):- entrada(X), plato_principal(Y), postre(Z).
 valor_calorico(X, Y, Z, V):- comida(X, Y, Z), calorias(X, V1), calorias(Y, V2), calorias(Z, V3), V is V1+V2+V3.
 comida_equilibrada(X, Y, Z):- valor_calorico(X, Y, Z, V), V < 800.
 
-% Define la regla para mostrar las comidas con consomé en la entrada
 mostrar_comidas_con_consome :-
     comida(consome, PlatoPrincipal, Postre),
     write('Entrada: consome, Plato Principal: '), write(PlatoPrincipal),
     write(', Postre: '), write(Postre), nl,
     false. % Evita que aparezca "false" al final
 
-% Define la regla para mostrar las comidas equilibradas con naranja como postre
 mostrar_comidas_equilibradas_con_naranja :-
     comida_equilibrada(Entrada, PlatoPrincipal, naranja),
     write('Comida equilibrada con naranja como postre: '), nl,
@@ -42,7 +40,7 @@ mostrar_comidas_equilibradas_con_naranja :-
     write('Postre: naranja'), nl, nl,
     false. % Evita que aparezca "false" al final
 
-% Define la regla para mostrar las comidas con un valor calórico de 500
+
 mostrar_comidas_con_valor_calorico_500 :-
     comida(Entrada, PlatoPrincipal, Postre),
     valor_calorico(Entrada, PlatoPrincipal, Postre, 500),
